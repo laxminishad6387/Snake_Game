@@ -9,17 +9,18 @@ addEventListener('DOMContentLoaded',function()
       const cellSize=20;
       let dx=cellSize;
       let dy=0;
+      let intervalId;
      let gameSpeed=200;
-      function moveFood()
-      {
-            let newx;
-            let newy;
-            do{
-                  newx=(Math.random()*30)*cellSize;
-                  newy=(Math.random()*30)*cellSize;
-            }while(snake.some(snakeElement =>snakeElement.x==newx && snakeElement.y==newy));
-            food = { x: newx, y: newy};
-      }
+     function moveFood() {
+      let newX, newY;
+
+      do {
+          newX = Math.floor(Math.random() * 30) * cellSize;
+          newY = Math.floor(Math.random() * 30) * cellSize;
+      } while(snake.some(snakeCell => snakeCell.x === newX && snakeCell.y === newY));
+
+      food = { x: newX, y: newY };
+  }
       // update snake function
       function updateSnake() {
             const newHead = { x: snake[0].x + dx, y: snake[0].y + dy };
@@ -61,13 +62,14 @@ addEventListener('DOMContentLoaded',function()
                 dy = 0;
             }
         }
-      function drawDiv(x, y, className) {
+        function drawDiv(x, y, className) {
             const divElement = document.createElement('div');
             divElement.classList.add(className);
             divElement.style.top = `${y}px`;
             divElement.style.left = `${x}px`;
             return divElement;
         }
+    
       //   draw food and snake
         function drawFoodAndSnake() {
             gameArena.innerHTML = ''; 
