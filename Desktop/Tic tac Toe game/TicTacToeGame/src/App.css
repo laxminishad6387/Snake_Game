@@ -1,0 +1,8 @@
+:root {
+  --yellow: #f0bb1a;
+  --resetGreen: #0eef42;
+}
+
+body {
+  background-color: rgb(10, 1, 1);
+}
